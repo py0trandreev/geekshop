@@ -5,6 +5,7 @@ from django.urls import reverse
 
 from authnapp.forms import ShopUserEditForm, ShopUserLoginForm, ShopUserRegisterForm
 
+
 # Create your views here.
 def login(request):
     title = "вход"

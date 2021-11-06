@@ -3,6 +3,7 @@ from django.contrib.auth.admin import UserAdmin
 
 from .models import ShopUser
 
+
 # Register your models here.
 class ShopUserAdmin(UserAdmin):
     add_fieldsets = (
