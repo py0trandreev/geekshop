@@ -49,7 +49,7 @@ def products(request, pk=None, page=1):
                 "price"
             )
 
-        paginator = Paginator(products, 2) #1-й пар. - QuerySet, 2-й сколько позиций на 1стр. хотим вывести
+        paginator = Paginator(products, 2)  # 1-й пар. - QuerySet, 2-й сколько позиций на 1стр. хотим вывести
         try:
             products_paginator = paginator.page(page)
         except PageNotAnInteger:
