@@ -121,7 +121,7 @@ def order_forming_complete(request, pk):
 
     return HttpResponseRedirect(reverse("ordersapp:orders_list"))
 
-
+  
 @receiver(pre_save, sender=OrderItem)
 @receiver(pre_save, sender=Basket)
 def product_quantity_update_save(instance, sender, **kwargs):
@@ -139,3 +139,4 @@ def product_quantity_update_save(instance, sender, **kwargs):
 def product_quantity_update_delete(instance, **kwargs):
     instance.product.quantity += instance.quantity
     instance.product.save()
+
