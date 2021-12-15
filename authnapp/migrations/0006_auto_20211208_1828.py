@@ -9,7 +9,9 @@ from django.utils.timezone import utc
 class Migration(migrations.Migration):
 
     dependencies = [
+
         ("authnapp", "0005_create_profiles"),
+
     ]
 
     operations = [
@@ -20,5 +22,6 @@ class Migration(migrations.Migration):
                 default=datetime.datetime(2021, 12, 10, 18, 28, 33, 738556, tzinfo=utc),
                 verbose_name="актуальность ключа",
             ),
+
         ),
     ]
