@@ -32,7 +32,7 @@ class OrderItemsCreate(CreateView):
         if self.request.POST:
             formset = OrderFormSet(self.request.POST)
         else:
-            basket_items = Basket.get_items(self.request.user)
+            basket_items = self.request.user.basket.select_related().order_by("product__category")
             if len(basket_items):
                 OrderFormSet = inlineformset_factory(Order, OrderItem, form=OrderItemForm, extra=len(basket_items))
                 formset = OrderFormSet()
@@ -143,3 +143,16 @@ def product_quantity_update_delete(instance, **kwargs):
     instance.product.quantity += instance.quantity
     instance.product.save()
 
+
+from django.http import JsonResponse
+
+from mainapp.models import Product
+
+
+def get_product_price(request, pk):
+    if request.is_ajax():
+        product = Product.objects.filter(pk=int(pk)).first()
+        if product:
+            return JsonResponse({"price": product.price})
+        else:
+            return JsonResponse({"price": 0})
