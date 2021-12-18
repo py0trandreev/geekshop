@@ -94,6 +94,7 @@ class ProductCategoryCreateView(LoginRequiredMixin, CreateView):
 
 from django.db.models import F
 
+
 class ProductCategoryUpdateView(LoginRequiredMixin, UpdateView):
     model = ProductCategory
     template_name = "adminapp/category_update.html"
@@ -114,6 +115,7 @@ class ProductCategoryUpdateView(LoginRequiredMixin, UpdateView):
                 db_profile_by_type(self.__class__, "UPDATE", connection.queries)
 
         return super().form_valid(form)
+
 
 class ProductCategoryDeleteView(LoginRequiredMixin, DeleteView):
     model = ProductCategory
@@ -214,4 +216,4 @@ def product_is_active_update_productcategory_save(sender, instance, **kwargs):
         else:
             instance.product_set.update(is_active=False)
 
-        #db_profile_by_type(sender, "UPDATE", connection.queries)
+        # db_profile_by_type(sender, "UPDATE", connection.queries)
